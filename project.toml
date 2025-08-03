@@ -1,0 +1,48 @@
+[project]
+id = "f1-winner-prediction"
+name = "F1 Winner Prediction API"
+version = "1.0.0"
+description = "Machine learning API for predicting Formula 1 race winners using linear regression"
+authors = ["Name <email@example.com>"]
+homepage = "https://github.com/username/f1-winner-prediction"
+repository = "https://github.com/username/f1-winner-prediction"
+keywords = ["f1", "machine-learning", "prediction", "api", "linear-regression"]
+
+[[project.licenses]]
+type = "MIT"
+
+[build]
+include = [
+    "src/",
+    "models/",
+    "data/processed/",
+    "requirements-prod.txt",
+    "Procfile"
+]
+
+[[build.env]]
+name = "BP_PYTHON_VERSION"
+value = "3.10"
+
+[[build.env]]
+name = "PORT"
+value = "9010"
+
+[[build.env]]
+name = "WEB_CONCURRENCY"
+value = "1"
+
+[[build.env]]
+name = "PYTHONPATH"
+value = "/workspace/src"
+
+[metadata]
+labels = [
+    "maintainer=Name <email@example.com>",
+    "version=1.0.0",
+    "description=F1 Winner Prediction API",
+    "org.opencontainers.image.source=https://github.com/username/f1-winner-prediction",
+    "org.opencontainers.image.licenses=MIT",
+    "org.opencontainers.image.title=F1 Winner Prediction API",
+    "org.opencontainers.image.description=Machine learning API for predicting Formula 1 race winners"
+]

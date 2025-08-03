@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: f1-ml-training
+  namespace: f1-ml
+spec:
+  template:
+    spec:
+      containers:
+      - name: f1-trainer
+        image: f1-winner-prediction:latest
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1"
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+        volumeMounts:
+        - name: data-volume
+          mountPath: /app/data
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: f1-data-pvc
+      restartPolicy: Never

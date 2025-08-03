@@ -1,0 +1,3 @@
+# This file includes development dependencies
+# For production builds, use requirements-prod.txt
+-r requirements-dev.txt
