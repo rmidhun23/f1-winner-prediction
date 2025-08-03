@@ -7,7 +7,10 @@ import logging
 import pandas as pd
 from flask import Flask, jsonify, request
 
-from predict_winner import load_model_and_scalers, predict_race_winner
+try:
+    from .predict_winner import load_model_and_scalers, predict_race_winner
+except ImportError:
+    from predict_winner import load_model_and_scalers, predict_race_winner
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -34,7 +37,9 @@ def predict():
         if model is None:
             return jsonify({"error": "Model not loaded"}), 500
 
-        data = request.get_json()
+        data = request.get_json(force=True, silent=True)
+        if data is None:
+            return jsonify({"error": "Invalid JSON data"}), 400
         if not data or "drivers" not in data:
             return jsonify({"error": "Invalid input: 'drivers' field required"}), 400
 
@@ -72,6 +77,9 @@ def predict():
 
     except Exception as e:
         app.logger.error(f"Prediction error: {e}")
+        # Check if it's a request parsing error
+        if "400 Bad Request" in str(e) or "JSON" in str(e):
+            return jsonify({"error": "Invalid request format"}), 400
         return jsonify({"error": str(e)}), 500
 
 

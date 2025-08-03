@@ -50,7 +50,14 @@ def predict_race_winner(race_data, model, scalers, original_data=None):
     result_data = (
         original_data.copy() if original_data is not None else race_data.copy()
     )
-    result_data["win_probability"] = predictions.flatten()
+    # Handle both numpy arrays and lists
+    if hasattr(predictions, "flatten"):
+        result_data["win_probability"] = predictions.flatten()
+    else:
+        # Convert list of lists to flat list
+        result_data["win_probability"] = [
+            p[0] if isinstance(p, list) else p for p in predictions
+        ]
 
     # Find most likely winner
     winner_idx = result_data["win_probability"].idxmax()
@@ -103,7 +110,7 @@ def example_prediction():
 
     print("")
     print(
-        f"Predicted Winner: {winner['driver_name']} (Probability: {winner['win_probability']:.3f})"
+        f"Predicted Winner: {winner['driver_name']} (Probability: {winner['win_probability']: .3f})"
     )
 
 

@@ -229,28 +229,7 @@ curl -X POST http://localhost:9010/predict \
   }'
 ```
 
-### 4. Development
-
-**Code Quality:**
-```bash
-# Run all linting tools manually
-black src/ --check
-isort src/ --check-only
-flake8 src/
-ruff check src/
-bandit -r src/
-codespell
-
-# Auto-fix formatting and issues
-black src/
-isort src/
-ruff check src/ --fix
-
-# Run pre-commit on all files
-pre-commit run --all-files
-```
-
-### 5. Cleanup
+### 3. Cleanup
 
 ```bash
 # Delete the kind cluster
