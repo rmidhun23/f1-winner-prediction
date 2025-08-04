@@ -229,30 +229,38 @@ curl -X POST http://localhost:9010/predict \
   }'
 ```
 
-### 4. Development
-
-**Code Quality:**
-```bash
-# Run all linting tools manually
-black src/ --check
-isort src/ --check-only
-flake8 src/
-ruff check src/
-bandit -r src/
-codespell
-
-# Auto-fix formatting and issues
-black src/
-isort src/
-ruff check src/ --fix
-
-# Run pre-commit on all files
-pre-commit run --all-files
-```
-
-### 5. Cleanup
+### 3. Cleanup
 
 ```bash
 # Delete the kind cluster
 kind delete cluster --name f1-prediction-cluster
 ```
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Quick Start for Contributors
+
+```bash
+# Fork and clone
+git clone https://github.com/yourusername/f1-winner-prediction.git
+cd f1-winner-prediction
+
+# Setup development environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements-dev.txt
+pre-commit install
+
+# Run tests
+pytest
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributors
+
+Thanks to all contributors who have helped improve this project! 🏎️

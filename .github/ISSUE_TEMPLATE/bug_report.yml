@@ -1,0 +1,56 @@
+name: 🐛 Bug Report
+description: Found a bug in the F1 prediction system? Let me know!
+title: "[BUG]: "
+labels: ["bug"]
+assignees:
+  - rmidhun23
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! This helps improve the F1 prediction project. 🏎️
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What's broken?
+      description: What happened vs what you expected?
+      placeholder: |
+        The API returns wrong predictions when...
+        Expected: Hamilton to win
+        Actual: Error 500
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce
+      description: Steps to reproduce the issue
+      placeholder: |
+        1. Start the API with `python -m src.api`
+        2. Send POST request to /predict with...
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your setup details
+      placeholder: |
+        - OS: macOS 14.0
+        - Python: 3.11.5
+        - Browser: Chrome (if API issue)
+        - Virtual env: Yes/No
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error logs
+      description: Copy/paste any error messages or stack traces
+      render: shell
