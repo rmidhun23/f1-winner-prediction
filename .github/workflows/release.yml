@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build
+
+    - name: Build package
+      run: |
+        python -m build
+
+    - name: Generate Release Notes
+      id: release_notes
+      run: |
+        # Get previous tag
+        PREV_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+
+        # Generate changelog
+        if [ -n "$PREV_TAG" ]; then
+          echo "## What's Changed" > release_notes.md
+          git log --pretty=format:"- %s" $PREV_TAG..HEAD >> release_notes.md
+        else
+          echo "## Initial Release" > release_notes.md
+          echo "- F1 Winner Prediction ML model" >> release_notes.md
+          echo "- REST API for predictions" >> release_notes.md
+          echo "- Comprehensive test suite" >> release_notes.md
+        fi
+
+    - name: Create Release with Assets
+      uses: softprops/action-gh-release@v1
+      with:
+        name: F1 Prediction ${{ github.ref_name }}
+        body_path: release_notes.md
+        files: |
+          dist/*.whl
+          dist/*.tar.gz
+        draft: false
+        prerelease: false
