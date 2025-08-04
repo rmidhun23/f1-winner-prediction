@@ -62,3 +62,6 @@ bandit-report.json
 htmlcov/
 .coverage
 .pytest_cache/
+
+# Local secrets
+.secrets

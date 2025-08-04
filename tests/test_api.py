@@ -43,6 +43,8 @@ class TestAPI(TestCase):
         data = json.loads(response.data)
         self.assertEqual(data["error"], "Model not loaded")
 
+    @mock.patch("src.api.model", mock.MagicMock())
+    @mock.patch("src.api.feature_names", ["test_feature"])
     def test_predict_invalid_input(self):
         """Test predict endpoint with invalid input."""
         # No drivers field
