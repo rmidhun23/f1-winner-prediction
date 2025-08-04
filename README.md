@@ -235,3 +235,32 @@ curl -X POST http://localhost:9010/predict \
 # Delete the kind cluster
 kind delete cluster --name f1-prediction-cluster
 ```
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Quick Start for Contributors
+
+```bash
+# Fork and clone
+git clone https://github.com/yourusername/f1-winner-prediction.git
+cd f1-winner-prediction
+
+# Setup development environment
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements-dev.txt
+pre-commit install
+
+# Run tests
+pytest
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributors
+
+Thanks to all contributors who have helped improve this project! 🏎️

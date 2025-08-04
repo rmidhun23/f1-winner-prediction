@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or Discussion
+    url: https://github.com/rmidhun23/f1-winner-prediction/discussions
+    about: Ask questions about F1 data, ML techniques, or how the project works
+  - name: Security Issue
+    url: https://github.com/rmidhun23/f1-winner-prediction/security/advisories/new
+    about: Report security vulnerabilities privately

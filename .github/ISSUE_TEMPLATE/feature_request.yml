@@ -1,0 +1,61 @@
+name: ✨ Feature Request
+description: Suggest an improvement for the F1 prediction project
+title: "[FEATURE]: "
+labels: ["enhancement"]
+assignees:
+  - rmidhun23
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Got an idea to make F1 predictions better? I'd love to hear it! 🏎️
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem or opportunity?
+      description: What F1 prediction challenge could be improved?
+      placeholder: |
+        It would be great if the model could predict...
+        The API is missing...
+        The data analysis doesn't show...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What's your idea?
+      description: How would you solve this?
+      placeholder: |
+        Add a new endpoint that...
+        Include weather data to improve...
+        Create a visualization that shows...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category
+      description: What area does this relate to?
+      options:
+        - ML Model (prediction accuracy, new features)
+        - API (new endpoints, better responses)
+        - Data (new data sources, processing)
+        - Visualization (charts, dashboards)
+        - Documentation (guides, examples)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any F1 domain knowledge, examples, or references?
+      placeholder: |
+        This is similar to how F1 teams use...
+        Here's a reference: https://...
+        I noticed this pattern in F1 data...
