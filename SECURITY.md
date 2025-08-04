@@ -2,7 +2,7 @@
 
 ## About This Project
 
-This is a personal learning project for F1 race prediction using machine learning. While it's primarily educational, I take security seriously for any code that might be deployed or used by others.
+This is a personal learning project for F1 race prediction using machine learning. While it's primarily educational, I wish to have for any code that might be deployed or used by others to be secure.
 
 ## Supported Versions
 
@@ -47,7 +47,7 @@ This project includes:
 ### Not Security Issues
 
 These are **not** considered security vulnerabilities:
-- Incorrect F1 predictions (it's ML, not perfect!)
+- Incorrect predictions
 - Performance issues
 - Missing features
 - Documentation gaps
@@ -65,4 +65,4 @@ If you're deploying this project:
 
 Security researchers who help improve this project will be acknowledged in the README (with permission).
 
-Thanks for helping keep this F1 prediction project secure! 🏎️
+Thanks for helping keep this project secure!
